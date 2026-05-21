@@ -1,0 +1,97 @@
+@use 'variables';
+
+// Utilities
+
+.pixel-grid {
+  background-image: radial-gradient(var(--color-pixel-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.pixel-shadow {
+  box-shadow: 4px 4px 0px 0px var(--color-pixel-grid);
+}
+
+.pixel-shadow-active:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--color-pixel-grid);
+}
+
+.pixel-shadow-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px var(--color-pixel-grid);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  &::after {
+    content: '_';
+    animation: blink 1s infinite steps(2);
+  }
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--spacing-container-max);
+  margin: 0 auto;
+}
+
+// Typographical Utilities
+.font-headline-xl {
+  font-family: var(--font-headline);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.font-headline-lg {
+  font-family: var(--font-headline);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.font-display-lg {
+  font-family: var(--font-headline);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.font-label-mono {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: 0.1em;
+}
+
+.font-label-sm {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.0;
+}
+
+.font-body-lg {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.font-body-md {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}

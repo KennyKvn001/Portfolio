@@ -1,10 +1,23 @@
-import './App.css'
-import {MainView} from "./views/MainView.tsx";
+
+import { Layout } from './components/layout/Layout';
+import { Hero } from './views/Hero';
+import { Projects } from './views/Projects';
+import { Contact } from './views/Contact';
 
 function App() {
   return (
-    <MainView />
-  )
+    <Layout>
+      <section id="stack">
+        <Hero />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+    </Layout>
+  );
 }
 
-export default App
+export default App;
