@@ -5,6 +5,16 @@
   flex-direction: column;
   height: 100dvh;
   overflow: hidden;
+  position: relative;
+}
+
+.global-bg-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .main-wrapper {
@@ -14,6 +24,8 @@
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  position: relative;
+  z-index: 1;
   
   // Padding for navbars
   padding-top: 5rem; // Accommodate TopNavBar

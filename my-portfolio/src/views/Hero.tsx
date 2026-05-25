@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Hero.scss';
 
 export function Hero() {
-  const imgRef = useRef<HTMLImageElement>(null);
   const [uptime, setUptime] = useState('00:00:00:00');
 
   useEffect(() => {
@@ -18,29 +17,8 @@ export function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (imgRef.current) {
-        const x = (window.innerWidth / 2 - e.pageX) / 50;
-        const y = (window.innerHeight / 2 - e.pageY) / 50;
-        imgRef.current.style.transform = `translate(${x}px, ${y}px)`;
-      }
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
-    <div className="hero-section pixel-grid">
-      {/* Abstract Pixel Art Visual Background */}
-      <div className="abstract-pixel-bg z-0">
-        <img
-          ref={imgRef}
-          alt="PX_DEV Abstract CPU Architecture"
-          className="bg-image"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZiS2DiKrn3fuyCO5BQ_yVGXKKWsze6Rb6NpgdgnVHjH1eYY2AI6uKzm-pOiFFLHgCfu4nQ0mkfIEfGJvKMDjbtnys5ydJUTiqGRoMW9Dh1RgD4CJfxQZwoG_KVouOMe1uh6rJ4yjYtvIuGJpQBUSCN7wyFVWh7Y-Vdw02uC_g7dzLoN2D8pgipUdnlgwiK6GEycXR099oOfOsnObkR-Yw2HqfUx9YNbpAENDfM3MtUGMvOKYmR8QPqQ_4Kp2jD0adj6g_-pnEyOro"
-        />
-      </div>
+    <div className="hero-section">
 
       {/* Foreground Content */}
       <div className="content-container z-10">
