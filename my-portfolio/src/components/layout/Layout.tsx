@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react';
 import { TopNavBar } from './TopNavBar';
-import { SideNavBar } from './SideNavBar';
-import { MobileNav } from './MobileNav';
 import PixelBlast from './PixelBlast';
 import './Layout.scss';
 
@@ -16,7 +14,7 @@ export function Layout({ children }: LayoutProps) {
         <PixelBlast
           variant="triangle"
           pixelSize={5}
-          color="#684024"
+          color="var(--color-pixel-grid)"
           patternScale={1.75}
           patternDensity={1.45}
           pixelSizeJitter={0.55}
@@ -34,11 +32,9 @@ export function Layout({ children }: LayoutProps) {
         />
       </div>
       <TopNavBar />
-      <SideNavBar />
       <div className="main-wrapper">
         {children}
       </div>
-      <MobileNav />
     </div>
   );
 }

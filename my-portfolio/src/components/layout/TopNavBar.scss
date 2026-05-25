@@ -9,10 +9,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem var(--spacing-margin-lg);
-  background-color: rgba(19, 19, 19, 0.9); // using surface color with opacity
-  backdrop-filter: blur(4px);
-  border-bottom: 2px solid var(--color-surface-variant);
+  padding: 1.5rem var(--spacing-margin-lg);
+  background-color: transparent;
 
   @media (max-width: 768px) {
     padding: 1rem var(--spacing-margin-sm);

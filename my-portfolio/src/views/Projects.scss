@@ -3,12 +3,13 @@
 .projects-view {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 10rem); // assuming we're rendering this in layout
+  height: 100vh;
   min-height: 600px;
   width: 100%;
+  padding-top: 5rem; // Clear TopNavBar
 
   @media (max-width: 1023px) {
-    height: calc(100vh - 10rem);
+    height: calc(100vh - 5rem); // Account for bottom MobileNav
   }
 
   .text-primary { color: var(--color-primary); }

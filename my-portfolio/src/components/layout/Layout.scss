@@ -26,13 +26,9 @@
   overflow-x: hidden;
   position: relative;
   z-index: 1;
-  
+
   // Padding for navbars
-  padding-top: 5rem; // Accommodate TopNavBar
-  
-  @media (min-width: 1024px) {
-    padding-left: 5rem; // Accommodate SideNavBar
-  }
+  padding-top: 0;
 
   @media (max-width: 1023px) {
     padding-bottom: 5rem; // Accommodate MobileNav

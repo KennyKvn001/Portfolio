@@ -352,6 +352,15 @@ void main(){
 
 const MAX_CLICKS = 10;
 
+const getCSSVal = (colorStr: string): string => {
+  if (typeof window !== 'undefined' && colorStr.startsWith('var(')) {
+    const varName = colorStr.slice(4, -1).trim();
+    const val = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    if (val) return val;
+  }
+  return colorStr;
+};
+
 const PixelBlast: React.FC<PixelBlastProps> = ({
   variant = 'square',
   pixelSize = 3,
@@ -457,7 +466,7 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
       const uniforms = {
         uResolution: { value: new THREE.Vector2(0, 0) },
         uTime: { value: 0 },
-        uColor: { value: new THREE.Color(color) },
+        uColor: { value: new THREE.Color(getCSSVal(color)) },
         uClickPos: {
           value: Array.from({ length: MAX_CLICKS }, () => new THREE.Vector2(-1, -1))
         },
@@ -601,7 +610,7 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
       const t = threeRef.current!;
       t.uniforms.uShapeType.value = SHAPE_MAP[variant] ?? 0;
       t.uniforms.uPixelSize.value = pixelSize * t.renderer.getPixelRatio();
-      t.uniforms.uColor.value.set(color);
+      t.uniforms.uColor.value.set(getCSSVal(color));
       t.uniforms.uScale.value = patternScale;
       t.uniforms.uDensity.value = patternDensity;
       t.uniforms.uPixelJitter.value = pixelSizeJitter;

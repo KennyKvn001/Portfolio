@@ -2,14 +2,14 @@
 
 .hero-section {
   position: relative;
-  min-height: calc(100dvh - 5rem); // account for top nav bar on desktop
+  min-height: 100dvh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
   @media (max-width: 1023px) {
-    min-height: calc(100dvh - 10rem); // account for top + bottom nav bars
+    min-height: calc(100dvh - 5rem); // account for bottom mobile nav bar
   }
 
   .z-0 {
