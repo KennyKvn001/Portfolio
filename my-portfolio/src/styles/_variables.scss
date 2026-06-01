@@ -1,3 +1,9 @@
+// Breakpoints (SCSS only — custom properties cannot be used in @media)
+$breakpoint-sm: 40rem;
+$breakpoint-md: 48rem;
+$breakpoint-lg: 64rem;
+$breakpoint-lg-max: 63.9375rem;
+
 :root {
   // Colors
   --color-primary-fixed-dim: #c6c6c7;
@@ -48,18 +54,34 @@
   --color-error-container: #93000a;
   --color-on-primary-fixed: #1a1c1c;
 
-  // Pixel Grid Base Color
   --color-pixel-grid: #3c2a21;
 
   // Spacing
-  --spacing-unit: 4px;
-  --spacing-container-max: 1200px;
-  --spacing-margin-lg: 80px;
-  --spacing-margin-md: 40px;
-  --spacing-gutter: 24px;
-  --spacing-margin-sm: 16px;
+  --spacing-unit: 0.25rem;
+  --spacing-container-max: 75rem;
+  --spacing-margin-lg: 5rem;
+  --spacing-margin-md: 2.5rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-margin-sm: 1rem;
 
   // Typography
+  --font-size-xs: 0.625rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.875rem;
+  --font-size-body: 1rem;
+  --font-size-body-lg: 1.125rem;
+
+  // Pixel UI (rem for offsets; 1px kept for crisp dots/lines in gradients)
+  --pixel-grid-size: 1.5rem;
+  --pixel-shadow-offset: 0.25rem;
+  --pixel-shadow-offset-sm: 0.125rem;
+  --pixel-shadow-offset-lg: 0.375rem;
+
+  // Borders — px only for hairlines
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-accent: 0.25rem;
+
   --font-headline: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-body: 'Geist', sans-serif;

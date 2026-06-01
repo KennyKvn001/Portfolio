@@ -3,14 +3,10 @@
 .projects-view {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  min-height: 600px;
+  height: 100%;
+  min-height: 0;
   width: 100%;
   padding-top: 5rem; // Clear TopNavBar
-
-  @media (max-width: 1023px) {
-    height: calc(100vh - 5rem); // Account for bottom MobileNav
-  }
 
   .text-primary { color: var(--color-primary); }
   .bg-primary { background-color: var(--color-primary); }
@@ -18,9 +14,9 @@
 
   .projects-header {
     padding: 2rem var(--spacing-margin-lg) 1rem;
-    border-bottom: 1px solid var(--color-surface-variant);
+    border-bottom: var(--border-width-thin) solid var(--color-surface-variant);
 
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
       padding: 2rem var(--spacing-margin-sm) 1rem;
     }
 
@@ -31,7 +27,7 @@
 
       h1 { margin: 0; }
       .opacity-50 { opacity: 0.5; }
-      .text-sm { font-size: 14px; }
+      .text-sm { font-size: var(--font-size-md); }
     }
   }
 
@@ -43,7 +39,7 @@
     overflow-x: auto;
     gap: var(--spacing-gutter);
 
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
       padding: 2rem var(--spacing-margin-sm);
     }
   }
@@ -52,14 +48,14 @@
     flex-shrink: 0;
     width: 20rem; // w-80
     background-color: var(--color-surface-container-low);
-    border: 1px solid var(--color-pixel-grid);
+    border: var(--border-width-thin) solid var(--color-pixel-grid);
     display: flex;
     flex-direction: column;
     height: 100%;
-    max-height: 500px;
+    max-height: 31.25rem;
     transition: all 0.3s ease;
 
-    @media (min-width: 1024px) {
+    @media (min-width: $breakpoint-lg) {
       width: 24rem; // lg:w-96
     }
 
@@ -78,7 +74,7 @@
 
     .card-header {
       padding: 1rem;
-      border-bottom: 1px solid var(--color-pixel-grid);
+      border-bottom: var(--border-width-thin) solid var(--color-pixel-grid);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -116,7 +112,7 @@
         transition: opacity 0.3s ease;
 
         .icon {
-          font-size: 6rem; // text-8xl approx 96px
+          font-size: 6rem;
         }
       }
     }
@@ -128,7 +124,7 @@
       gap: 1rem;
 
       .desc {
-        font-size: 14px;
+        font-size: var(--font-size-md);
         line-height: 1.6;
         margin: 0;
       }
@@ -140,32 +136,24 @@
         .tag {
           padding: 0.25rem 0.5rem;
           background-color: var(--color-surface-container-highest);
-          border: 1px solid var(--color-pixel-grid);
+          border: var(--border-width-thin) solid var(--color-pixel-grid);
         }
       }
 
-      .view-log-btn {
+      .btn {
         margin-top: auto;
-        width: 100%;
-        padding: 0.75rem 0;
-        border: 2px solid var(--color-primary);
-        
-        &:hover {
-          background-color: var(--color-primary);
-          color: #000;
-        }
       }
     }
   }
 
   .projects-footer {
     padding: 1.5rem var(--spacing-margin-lg);
-    border-top: 1px solid var(--color-surface-variant);
+    border-top: var(--border-width-thin) solid var(--color-surface-variant);
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
       padding: 1.5rem var(--spacing-margin-sm);
     }
 
@@ -192,7 +180,7 @@
       .env-indicator {
         &.hidden { display: none; }
         &.md-block {
-          @media (min-width: 768px) { display: block; }
+          @media (min-width: $breakpoint-md) { display: block; }
         }
       }
     }

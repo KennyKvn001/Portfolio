@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Button } from '../components/ui/Button';
 import './Contact.scss';
 
 export function Contact() {
@@ -110,9 +111,9 @@ export function Contact() {
                 <label className="font-label-mono uppercase">Payload_Body</label>
                 <textarea rows={4} placeholder="ENTER_MESSAGE..." className="font-label-mono"></textarea>
               </div>
-              <button type="submit" className="submit-btn font-label-mono font-bold pixel-shadow uppercase tracking-widest">
+              <Button type="submit" variant="primary" fullWidth>
                 CONNECT
-              </button>
+              </Button>
             </form>
           </div>
 

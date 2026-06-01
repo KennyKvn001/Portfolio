@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Button } from '../components/ui/Button';
 import './Projects.scss';
 
 const projects = [
@@ -95,9 +96,9 @@ export function Projects() {
                   <span key={tag} className="tag font-label-sm">{tag}</span>
                 ))}
               </div>
-              <button className="view-log-btn bg-transparent text-primary font-label-mono transition-colors pixel-shadow-active">
+              <Button variant="secondary" fullWidth>
                 VIEW_LOG
-              </button>
+              </Button>
             </div>
           </article>
         ))}

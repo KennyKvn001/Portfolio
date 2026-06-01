@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Button } from '../components/ui/Button';
 import './Hero.scss';
 
 export function Hero() {
@@ -29,26 +30,26 @@ export function Hero() {
           </p>
         </div>
 
-        <h1 className="font-display-lg text-primary tracking-tighter leading-none mb-4">
-          PX_DEV.SYS<span className="terminal-cursor"></span>
+        <h1 className="font-display-lg text-primary tracking-tighter leading-none">
+          // KENNY_KEVIN.MUG<span className="terminal-cursor"></span>
         </h1>
 
         <div className="hero-details">
           <h2 className="font-headline-xl text-secondary uppercase border-left-secondary">
-            FULLSTACK<br />ARCHITECT
+            FULLSTACK<br />DEVELOPER
           </h2>
           <div className="hero-desc">
-            <p className="font-body-lg text-on-surface-variant mb-8">
+            <p className="font-body-lg text-on-surface-variant">
               Building deterministic digital infrastructures through precise pixel-grid alignment and low-level system design.
             </p>
             <div className="hero-actions">
-              <button className="primary-btn pixel-shadow pixel-shadow-hover bg-primary text-on-primary font-label-mono transition-all">
+              <Button
+                variant="primary"
+                icon={<span className="material-symbols-outlined icon">arrow_forward</span>}
+              >
                 INITIALIZE_PROJECTS
-                <span className="material-symbols-outlined icon">arrow_forward</span>
-              </button>
-              <button className="secondary-btn border-primary text-primary font-label-mono transition-colors">
-                VIEW_SOURCE
-              </button>
+              </Button>
+              <Button variant="secondary">VIEW_SOURCE</Button>
             </div>
           </div>
         </div>

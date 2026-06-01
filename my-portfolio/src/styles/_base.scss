@@ -1,4 +1,4 @@
-@use 'variables';
+@use 'variables' as *;
 
 * {
   box-sizing: border-box;
@@ -7,11 +7,11 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; // Constraint: No vertical scrolling
+  overflow: hidden;
   background-color: var(--color-background);
   color: var(--color-on-surface);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: var(--font-size-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -39,9 +39,14 @@ button {
   color: var(--color-background);
 }
 
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-pixel-grid) var(--color-surface-container-lowest);
+}
+
 .custom-scrollbar::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
+  height: var(--spacing-unit);
+  width: var(--spacing-unit);
 }
 .custom-scrollbar::-webkit-scrollbar-track {
   background: var(--color-surface-container-lowest);

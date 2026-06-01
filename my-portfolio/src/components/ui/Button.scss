@@ -1,0 +1,39 @@
+@use '../../styles/variables' as *;
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.1s ease;
+
+  .icon {
+    font-size: var(--font-size-md);
+  }
+
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  &--secondary {
+    border: var(--border-width-medium) solid var(--color-primary);
+    background-color: transparent;
+    color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-surface-container-high);
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+}

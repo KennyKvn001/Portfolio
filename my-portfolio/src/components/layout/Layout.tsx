@@ -1,6 +1,7 @@
-import type { ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import { TopNavBar } from './TopNavBar';
 import PixelBlast from './PixelBlast';
+import { attachHorizontalSectionWheel } from './attachHorizontalSectionWheel';
 import './Layout.scss';
 
 interface LayoutProps {
@@ -8,6 +9,17 @@ interface LayoutProps {
 }
 
 export function Layout({ children }: LayoutProps) {
+  const mainScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = mainScrollRef.current;
+    if (!container) {
+      return;
+    }
+
+    return attachHorizontalSectionWheel(container);
+  }, []);
+
   return (
     <div className="layout-container">
       <div className="global-bg-container">
@@ -32,7 +44,7 @@ export function Layout({ children }: LayoutProps) {
         />
       </div>
       <TopNavBar />
-      <div className="main-wrapper">
+      <div ref={mainScrollRef} className="main-wrapper custom-scrollbar">
         {children}
       </div>
     </div>
