@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '../components/ui/Button';
 import './Projects.scss';
+import CardSwap, { Card } from '../components/CardSwap/CardSwap';
 
 const projects = [
   {
@@ -72,37 +73,27 @@ export function Projects() {
         </div>
       </header>
 
-      <section ref={scrollRef} className="projects-showcase custom-scrollbar">
-        {projects.map(proj => (
-          <article key={proj.id} className="project-card group">
-            <div className="card-header">
-              <h2 className="font-label-mono text-primary">{proj.title}</h2>
-              <span className="indicator-dot bg-primary"></span>
-            </div>
-            
-            <div className="card-image-wrapper">
-              <img className="project-img group-hover-img" src={proj.imgUrl} alt={proj.title} />
-              <div className="icon-overlay group-hover-icon">
-                <span className="material-symbols-outlined text-primary icon">{proj.icon}</span>
-              </div>
-            </div>
-
-            <div className="card-body">
-              <p className="font-body-md text-on-surface-variant desc">
-                {proj.desc}
-              </p>
-              <div className="tags">
-                {proj.tags.map(tag => (
-                  <span key={tag} className="tag font-label-sm">{tag}</span>
-                ))}
-              </div>
-              <Button variant="secondary" fullWidth>
-                VIEW_LOG
-              </Button>
-            </div>
-          </article>
-        ))}
-      </section>
+      <div style={{ height: '600px', position: 'relative' }}>
+  <CardSwap
+    cardDistance={60}
+    verticalDistance={70}
+    delay={5000}
+    pauseOnHover={false}
+  >
+    <Card>
+      <h3>Card 1</h3>
+      <p>Your content here</p>
+    </Card>
+    <Card>
+      <h3>Card 2</h3>
+      <p>Your content here</p>
+    </Card>
+    <Card>
+      <h3>Card 3</h3>
+      <p>Your content here</p>
+    </Card>
+  </CardSwap>
+</div>
 
       <footer className="projects-footer bg-surface-container-lowest">
         <div className="footer-left">
