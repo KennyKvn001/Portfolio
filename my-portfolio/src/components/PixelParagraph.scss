@@ -1,0 +1,17 @@
+@use '@app/styles/tokens' as *;
+
+// Word gap = 3 pixels (one space), line gap = 2 pixels: both stay on the pixel grid.
+.pixel-paragraph {
+  display: flex;
+  flex-wrap: wrap;
+  gap: px(2) px(3);
+  margin: 0;
+
+  // Pieces of one long word sit one letter-space apart and only wrap when the line is full.
+  &__word {
+    display: flex;
+    flex-wrap: wrap;
+    gap: px(2) px(1);
+    min-width: 0;
+  }
+}

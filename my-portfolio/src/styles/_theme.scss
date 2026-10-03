@@ -1,0 +1,13 @@
+// Theme: every colour of the site, plus the dot-matrix mask that turns the page into equal pixels.
+
+:root {
+  // Black and grey-green.
+  --color-page: #a3ac96;
+  --color-ink: #0e120e;
+  --color-casing: #c3cab6;
+  --color-key: #dce2d0;
+  --color-lcd: #b8c3a3;
+
+  // One 4px cell with a 3px lit square; repeated over the page, it cuts everything into pixels.
+  --dot-matrix-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect width='3' height='3' fill='white'/%3E%3C/svg%3E");
+}

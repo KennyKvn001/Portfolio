@@ -1,0 +1,72 @@
+@use '@app/styles/tokens' as *;
+
+.lcd {
+  display: flex;
+  flex-direction: column;
+  height: clamp(400px, calc(100vh - 240px), 760px);
+  background: var(--color-lcd);
+  color: var(--color-ink);
+
+  @supports (height: round(down, 100vh, 4px)) {
+    height: round(down, clamp(400px, calc(100vh - 240px), 760px), $pixel);
+  }
+
+  @media (max-width: $portrait-breakpoint) {
+    height: clamp(360px, 56vh, 620px);
+
+    @supports (height: round(down, 100vh, 4px)) {
+      height: round(down, clamp(360px, 56vh, 620px), $pixel);
+    }
+  }
+
+  &__status {
+    display: flex;
+    align-items: flex-start;
+    gap: px(2);
+    padding: px(2) px(2) px(1);
+    background: var(--color-ink);
+    color: var(--color-lcd);
+  }
+
+  &__title {
+    flex: 1;
+  }
+
+  &__body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__scroll {
+    flex: 1;
+    min-width: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: px(3) px(3) px(4);
+    background: var(--color-lcd);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline-offset: px(-2);
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      padding: px(2) px(2) px(3);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+  &__scrollbar {
+    margin: px(1) px(1) 0;
+  }
+}

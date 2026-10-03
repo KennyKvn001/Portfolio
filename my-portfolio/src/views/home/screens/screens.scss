@@ -1,0 +1,149 @@
+@use '@app/styles/tokens' as *;
+
+// Everything on the LCD sits on the global pixel grid: all gaps and paddings are whole pixels.
+
+@keyframes lcd-blink {
+  50% {
+    visibility: hidden;
+  }
+}
+
+.lcd-screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: px(5);
+}
+
+.lcd-heading {
+  display: flex;
+  align-self: stretch;
+}
+
+.lcd-inverted {
+  padding: px(1) px(1) 0 px(1);
+  background: var(--color-ink);
+  color: var(--color-lcd);
+}
+
+.lcd-list {
+  display: flex;
+  flex-direction: column;
+  gap: px(5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: px(2);
+
+    // Phones: icon above the text, so long words get the full width.
+    @media (max-width: $mobile-breakpoint) {
+      flex-direction: column;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    flex: none;
+    width: px(12);
+  }
+}
+
+.lcd-link {
+  display: flex;
+  padding: px(1) 0 0 px(1);
+  color: inherit;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-ink);
+    color: var(--color-lcd);
+  }
+}
+
+.lcd-contact {
+  display: flex;
+  flex-direction: column;
+  gap: px(1);
+  min-width: 0;
+}
+
+.lcd-project {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: px(4);
+  width: 100%;
+
+  &__title {
+    display: flex;
+  }
+
+  &__summary {
+    display: flex;
+    align-items: flex-start;
+    gap: px(2);
+
+    @media (max-width: $mobile-breakpoint) {
+      flex-direction: column;
+    }
+  }
+}
+
+.lcd-tags,
+.lcd-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: px(2) px(4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lcd-rule {
+  display: block;
+}
+
+.home-screen {
+  &__name {
+    display: flex;
+    align-self: stretch;
+  }
+
+  &__facts {
+    display: flex;
+    flex-direction: column;
+    gap: px(3);
+  }
+
+  &__fact {
+    display: flex;
+    gap: px(2);
+
+    dt {
+      flex: none;
+      width: px(30);
+    }
+
+    dd {
+      min-width: 0;
+    }
+  }
+
+  // Fixed spacing (not an auto margin), so the stack always starts on a whole pixel.
+  &__bricks {
+    margin-top: px(6);
+  }
+
+  &__prompt {
+    animation: lcd-blink 1.2s steps(1) infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+// Sass-only tokens and mixins. This file emits no CSS, so components can @use it freely.
+
+// The one pixel of the site. Keep in sync with PIXEL_SIZE in src/common/pixel/pixelSize.ts.
+$pixel: 4px;
+
+// A length of $count pixels. Every size, gap, border and offset uses this so shapes cover whole cells.
+@function px($count) {
+  @return $count * $pixel;
+}
+
+// Keep in sync with MOBILE_QUERY in src/common/constants/mediaQueries.ts.
+$mobile-breakpoint: 720px;
+// Below this width the keypad moves under the screen.
+$portrait-breakpoint: 900px;
+
+// A border $rows pixels thick. Solid here; the page mask cuts it into pixels.
+@mixin pixel-frame($rows: 1) {
+  border: px($rows) solid var(--color-ink);
+  border-radius: 0;
+}
+
+// Hard offset shadow, $rows pixels down and right.
+@mixin pixel-shadow($rows: 2) {
+  box-shadow: px($rows) px($rows) 0 0 var(--color-ink);
+}
+
+// Pressable key: lifts one pixel on hover and sinks into its shadow when pressed, with no transition.
+@mixin pressable {
+  @include pixel-frame(1);
+  @include pixel-shadow(2);
+  cursor: pointer;
+
+  &:hover {
+    transform: translate(px(-1), px(-1));
+    box-shadow: px(3) px(3) 0 0 var(--color-ink);
+  }
+
+  &:active {
+    transform: translate(px(2), px(2));
+    box-shadow: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover,
+    &:active {
+      transform: none;
+      box-shadow: px(2) px(2) 0 0 var(--color-ink);
+    }
+  }
+}

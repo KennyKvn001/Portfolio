@@ -1,27 +1,13 @@
-
-import { Layout } from './components/layout/Layout';
-import { Hero } from './views/Hero';
-import { About } from './views/About';
-import { Projects } from './views/Projects';
-import { Contact } from './views/Contact';
+import {useEffect} from 'react';
+import {content} from '@app/content';
+import {HomeView} from '@app/views/home/HomeView';
 
 function App() {
-  return (
-    <Layout>
-      <section id="stack">
-        <Hero />
-      </section>
-      <section id="about">
-        <About />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
-      <section id="contact">
-        <Contact />
-      </section>
-    </Layout>
-  );
+    useEffect(() => {
+        document.title = content.meta.title;
+    }, []);
+
+    return <HomeView/>;
 }
 
 export default App;

@@ -1,0 +1,82 @@
+@use '@app/styles/tokens' as *;
+
+// Arrow icons are 7 pixels wide; this centres them on a whole pixel.
+$arrow-icon-width: px(7);
+
+.keypad {
+  display: flex;
+  flex-direction: column;
+  gap: px(6);
+
+  // Grid widths are rounded so every column (and key) is a whole number of pixels.
+  &__arrows {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: px(4);
+
+    @supports (width: round(down, 100%, 4px)) {
+      width: round(down, 100%, px(4));
+    }
+  }
+
+  &__numbers {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: px(4);
+
+    @supports (width: round(down, 100%, 4px)) {
+      width: round(down, 100%, px(2));
+    }
+  }
+
+  &__hint {
+    @media (pointer: coarse) {
+      display: none;
+    }
+  }
+
+  &__speaker {
+    @media (max-width: $portrait-breakpoint) {
+      display: none;
+    }
+  }
+
+  &__key {
+    @include pressable;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: px(2);
+    min-width: 0;
+    margin: 0;
+    padding: px(2);
+    background: var(--color-key);
+    color: var(--color-ink);
+    font: inherit;
+    text-align: left;
+
+    @media (max-width: $mobile-breakpoint) {
+      padding: px(1);
+    }
+
+    &--wide {
+      grid-column: 1 / -1;
+    }
+
+    &--arrow {
+      padding: px(3) 0;
+      background: var(--color-ink);
+      color: var(--color-key);
+
+      // Centre the icon, rounded down to a whole pixel (percentages resolve against the grid cell).
+      @supports (width: round(down, 100%, 4px)) {
+        padding-left: round(down, calc((100% - #{px(2)} - #{$arrow-icon-width}) / 2), $pixel);
+      }
+    }
+
+    &[aria-pressed='true'] {
+      background: var(--color-ink);
+      color: var(--color-key);
+    }
+  }
+}

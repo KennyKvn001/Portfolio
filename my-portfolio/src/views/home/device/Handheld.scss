@@ -1,0 +1,70 @@
+@use '@app/styles/tokens' as *;
+
+$device-max-width: 1120px;
+
+.handheld {
+  @include pixel-frame(2);
+  @include pixel-shadow(4);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: px(6);
+  width: min($device-max-width, 100%);
+  margin: 0 auto;
+  padding: px(6) px(6) px(8);
+  background: var(--color-casing);
+
+  // Width and left edge rounded to whole pixels, so the device sits on the page's pixel grid.
+  @supports (width: round(down, 100%, 4px)) {
+    width: round(down, min($device-max-width, 100%), $pixel);
+    margin-left: round(down, calc((100% - round(down, min($device-max-width, 100%), $pixel)) / 2), $pixel);
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    @include pixel-frame(1);
+    @include pixel-shadow(2);
+    gap: px(4);
+    padding: px(3) px(1) px(4);
+  }
+
+  &__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: px(3) px(6);
+  }
+
+  &__owner {
+    display: flex;
+    min-width: 0;
+  }
+
+  &__model {
+    padding: px(1) px(1) 0 px(1);
+    background: var(--color-ink);
+    color: var(--color-lcd);
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) px(86);
+    align-items: start;
+    gap: px(8);
+
+    @media (max-width: $portrait-breakpoint) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: px(6);
+    }
+  }
+
+  &__bezel {
+    min-width: 0;
+    padding: px(4);
+    background: var(--color-ink);
+
+    @media (max-width: $mobile-breakpoint) {
+      padding: px(2);
+    }
+  }
+}

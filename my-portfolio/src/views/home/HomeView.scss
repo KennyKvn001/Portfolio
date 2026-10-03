@@ -1,0 +1,19 @@
+@use '@app/styles/tokens' as *;
+
+.home {
+  padding: px(8) px(8) 0;
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: px(2) px(2) 0;
+  }
+}
+
+.home-footer {
+  position: relative;
+  z-index: 1;
+  padding: px(10) px(8) px(8);
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: px(8) px(2) px(6);
+  }
+}

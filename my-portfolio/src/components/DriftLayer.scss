@@ -1,0 +1,84 @@
+@use 'sass:list';
+@use 'sass:math';
+@use '@app/styles/tokens' as *;
+
+
+// One slot per item: top, horizontal anchor (left or right), offset, drift x, drift y, duration.
+// Slots hug the left and right edges so the drift stays around the content.
+// Drift x and y have the same length, so every step moves exactly one pixel on both axes.
+$slots: (
+  (8vh, left, 3vw, 48px, 48px, 9s),
+  (12vh, right, 4vw, -48px, 48px, 11s),
+  (20vh, left, 1vw, 40px, -40px, 10s),
+  (26vh, right, 2vw, -56px, -56px, 12s),
+  (34vh, left, 4vw, 40px, 40px, 8s),
+  (40vh, right, 5vw, -32px, 32px, 10s),
+  (48vh, left, 2vw, 56px, -56px, 13s),
+  (54vh, right, 1vw, -48px, -48px, 9s),
+  (62vh, left, 5vw, -32px, 32px, 11s),
+  (68vh, right, 4vw, 48px, -48px, 12s),
+  (76vh, left, 1vw, -40px, 40px, 14s),
+  (82vh, right, 2vw, 48px, 48px, 10s),
+  (88vh, left, 4vw, -48px, -48px, 12s),
+  (92vh, right, 5vw, 40px, -40px, 9s),
+  (3vh, left, 9vw, 40px, 40px, 13s),
+  (96vh, right, 9vw, -40px, -40px, 11s)
+);
+
+// Absolute (not fixed) so the icons scroll with the page and stay on its pixel grid.
+.drift-layer {
+  position: absolute;
+  inset: 0 auto 0 0;
+  // Whole-pixel width, so items placed from the right edge also land on the grid.
+  width: round(down, 100%, $pixel);
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  color: var(--color-ink);
+
+  &__item {
+    position: absolute;
+    display: flex;
+
+    // Words are wider than icons; show them only where the side margins can hold them.
+    &--word {
+      @media (max-width: 1599px) {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+@for $index from 1 through list.length($slots) {
+  $slot: list.nth($slots, $index);
+  $drift-x: list.nth($slot, 4);
+  $drift-y: list.nth($slot, 5);
+  $steps: math.div(math.abs($drift-x), $pixel);
+
+  .drift-layer__item:nth-child(#{$index}) {
+    // Positions rounded to whole pixels so the items sit on the page's pixel grid.
+    top: round(down, list.nth($slot, 1), $pixel);
+    #{list.nth($slot, 2)}: round(down, list.nth($slot, 3), $pixel);
+    // steps() makes the items jump pixel by pixel instead of gliding.
+    animation: drift-#{$index} list.nth($slot, 6) steps($steps) infinite alternate;
+  }
+
+  @keyframes drift-#{$index} {
+    to {
+      transform: translate($drift-x, $drift-y);
+    }
+  }
+}
+
+// Phones have no side margins, so keep only a few items near the edges.
+@media (max-width: $mobile-breakpoint) {
+  .drift-layer__item:nth-child(n + 7) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drift-layer__item {
+    animation: none !important;
+  }
+}
